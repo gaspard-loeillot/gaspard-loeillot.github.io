@@ -9,10 +9,11 @@ const allEssays = (await getCollection('essays', ({ data }) => !data.draft)).sor
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 
-// Most recent N are displayed as visual cards; the rest collapse into a list.
-const RECENT_CARDS = 4;
+// Top N are featured as visual cards (with cover image).
+// The list below shows every essay in reverse-chronological order.
+const RECENT_CARDS = 3;
 const recent = allEssays.slice(0, RECENT_CARDS);
-const older = allEssays.slice(RECENT_CARDS);
+const hasMoreThanFeatured = allEssays.length > RECENT_CARDS;
 ---
 
 <BaseLayout>
@@ -62,16 +63,16 @@ const older = allEssays.slice(RECENT_CARDS);
   }
 
   {
-    older.length > 0 && (
+    hasMoreThanFeatured && (
       <section class="mt-16 flex flex-col gap-4">
         <h2
           class="ui text-[11px] uppercase tracking-[0.2em]"
           style="color: var(--fg-faint);"
         >
-          Archive
+          All essays
         </h2>
         <ul class="divide-y" style="border-color: var(--rule);">
-          {older.map((essay) => (
+          {allEssays.map((essay) => (
             <EssayListItem essay={essay} />
           ))}
         </ul>

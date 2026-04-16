@@ -22,6 +22,7 @@ export const SOCIALS = {
 };
 
 export const NAV_ITEMS = [
+  { label: 'Essays', href: '/essays/' },
   { label: 'Projects', href: '/projects/' },
   { label: 'Podcasts', href: '/podcasts/' },
   { label: 'Quotes', href: '/quotes/' },
