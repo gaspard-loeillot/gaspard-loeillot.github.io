@@ -25,6 +25,6 @@ export const NAV_ITEMS = [
   { label: 'Projects', href: '/projects/' },
   { label: 'Podcasts', href: '/podcasts/' },
   { label: 'Quotes', href: '/quotes/' },
-  { label: 'CV', href: '/cv.pdf' }, // TODO: drop a PDF into /public/cv.pdf
+  { label: 'CV', href: '/cv.pdf' },
   { label: 'About', href: '/about/' },
 ] as const;
