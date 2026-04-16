@@ -9,8 +9,8 @@ interface Props {
   description?: string;
   /** Relative URL for canonical + og:url. Defaults to Astro.url.pathname. */
   pathname?: string;
-  /** Narrow reading column (essays) vs default site width. */
-  variant?: 'default' | 'reading';
+  /** Narrow reading column (essays), default site width, or wide grid. */
+  variant?: 'default' | 'reading' | 'wide';
 }
 
 const {
@@ -72,7 +72,11 @@ const canonical = new URL(pathname, SITE_URL).toString();
       <main
         class:list={[
           'mx-auto w-full flex-1 py-10 sm:py-16',
-          variant === 'reading' ? 'max-w-[680px]' : 'max-w-3xl',
+          variant === 'reading'
+            ? 'max-w-[680px]'
+            : variant === 'wide'
+              ? 'max-w-5xl'
+              : 'max-w-3xl',
         ]}
       >
         <slot />

@@ -1,27 +1,10 @@
 ---
-import { SOCIALS } from '../consts.ts';
-
 const year = new Date().getFullYear();
 ---
 
 <footer
-  class="ui mt-16 flex flex-col items-start justify-between gap-3 border-t py-6 text-xs sm:flex-row sm:items-center"
+  class="ui mt-16 border-t py-6 text-xs"
   style="border-color: var(--rule); color: var(--fg-faint);"
 >
   <div>© {year} Gaspard Loeillot</div>
-  <div class="flex items-center gap-4">
-    <a href="/rss.xml" class="hover:no-underline">RSS</a>
-    <a
-      href={SOCIALS.github}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="hover:no-underline">GitHub</a
-    >
-    <a
-      href={SOCIALS.linkedin}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="hover:no-underline">LinkedIn</a
-    >
-  </div>
 </footer>

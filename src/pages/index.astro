@@ -3,20 +3,19 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EssayCard from '../components/EssayCard.astro';
 import EssayListItem from '../components/EssayListItem.astro';
-import { AUTHOR } from '../consts.ts';
 
 const allEssays = (await getCollection('essays', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 
-// Top N are featured as visual cards (with cover image).
+// Top N are featured as visual cards (with cover image) in a 2x3 grid.
 // The list below shows every essay in reverse-chronological order.
-const RECENT_CARDS = 3;
+const RECENT_CARDS = 6;
 const recent = allEssays.slice(0, RECENT_CARDS);
 const hasMoreThanFeatured = allEssays.length > RECENT_CARDS;
 ---
 
-<BaseLayout>
+<BaseLayout variant="wide">
   <section class="flex items-start gap-6 sm:gap-8">
     <img
       src="/images/gaspard.jpg"
@@ -46,14 +45,14 @@ const hasMoreThanFeatured = allEssays.length > RECENT_CARDS;
 
   {
     recent.length > 0 && (
-      <section class="flex flex-col gap-8">
+      <section id="essays" class="scroll-mt-8 flex flex-col gap-8">
         <h2
           class="ui text-[11px] uppercase tracking-[0.2em]"
           style="color: var(--fg-faint);"
         >
           Recent
         </h2>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {recent.map((essay) => (
             <EssayCard essay={essay} />
           ))}

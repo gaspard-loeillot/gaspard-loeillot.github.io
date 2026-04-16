@@ -22,10 +22,10 @@ export const SOCIALS = {
 };
 
 export const NAV_ITEMS = [
-  { label: 'Essays', href: '/essays/' },
-  { label: 'Projects', href: '/projects/' },
+  { label: 'Essays', href: '/#essays' },
   { label: 'Podcasts', href: '/podcasts/' },
   { label: 'Quotes', href: '/quotes/' },
+  { label: 'Projects', href: '/projects/' },
   { label: 'CV', href: '/cv.pdf' },
   { label: 'About', href: '/about/' },
 ] as const;
