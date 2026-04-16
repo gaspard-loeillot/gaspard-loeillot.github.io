@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EssayCard from '../components/EssayCard.astro';
+import EssayListItem from '../components/EssayListItem.astro';
+import { AUTHOR } from '../consts.ts';
+
+const allEssays = (await getCollection('essays', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+// Most recent N are displayed as visual cards; the rest collapse into a list.
+const RECENT_CARDS = 4;
+const recent = allEssays.slice(0, RECENT_CARDS);
+const older = allEssays.slice(RECENT_CARDS);
+---
+
+<BaseLayout>
+  <section class="flex items-start gap-6 sm:gap-8">
+    <img
+      src="/images/gaspard.jpg"
+      alt="Gaspard Loeillot"
+      class="h-20 w-20 shrink-0 rounded-full object-cover sm:h-24 sm:w-24"
+      style="background: var(--rule);"
+      onerror="this.style.display='none'"
+    />
+    <div class="flex flex-col gap-3">
+      <h1 class="font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
+        Hi, I'm Gaspard.
+      </h1>
+      <p
+        class="text-[17px] leading-relaxed"
+        style="color: var(--fg-muted);"
+      >
+        I'm a founding engineer at
+        <a href="/projects/" class="underline decoration-[var(--rule)]"
+          >Laurence</a
+        > (YC&nbsp;W26). I write essays and record conversations with founders,
+        investors, and interesting people. This is where I think out loud.
+      </p>
+    </div>
+  </section>
+
+  <hr class="my-12" style="border-color: var(--rule);" />
+
+  {
+    recent.length > 0 && (
+      <section class="flex flex-col gap-8">
+        <h2
+          class="ui text-[11px] uppercase tracking-[0.2em]"
+          style="color: var(--fg-faint);"
+        >
+          Recent
+        </h2>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {recent.map((essay) => (
+            <EssayCard essay={essay} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    older.length > 0 && (
+      <section class="mt-16 flex flex-col gap-4">
+        <h2
+          class="ui text-[11px] uppercase tracking-[0.2em]"
+          style="color: var(--fg-faint);"
+        >
+          Archive
+        </h2>
+        <ul class="divide-y" style="border-color: var(--rule);">
+          {older.map((essay) => (
+            <EssayListItem essay={essay} />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    allEssays.length === 0 && (
+      <section class="py-10">
+        <p class="text-[15px]" style="color: var(--fg-muted);">
+          No essays yet. Drafting in the open.
+        </p>
+      </section>
+    )
+  }
+</BaseLayout>

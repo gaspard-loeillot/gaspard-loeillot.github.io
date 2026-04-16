@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SOCIALS, AUTHOR } from '../consts.ts';
+---
+
+<BaseLayout title="About" variant="reading">
+  <header class="mb-10 flex items-center gap-6">
+    <img
+      src="/images/gaspard.jpg"
+      alt="Gaspard Loeillot"
+      class="h-24 w-24 rounded-full object-cover"
+      style="background: var(--rule);"
+      onerror="this.style.display='none'"
+    />
+    <div>
+      <h1 class="font-serif text-3xl leading-tight tracking-tight">
+        Gaspard Loeillot
+      </h1>
+      <p class="ui mt-1 text-[14px]" style="color: var(--fg-muted);">
+        {AUTHOR.role} · {AUTHOR.location}
+      </p>
+    </div>
+  </header>
+
+  <div
+    class="prose prose-lg max-w-none font-serif leading-relaxed"
+  >
+    <p>
+      I'm a founding engineer at
+      <a href="/projects/">Laurence</a>, a YC W26 startup. Before that I
+      worked at BCG and interned at Schneider Electric and L'Oréal. I studied
+      Computer Science at Cornell and Mathematics / Machine Learning at
+      Oxford.
+    </p>
+
+    <p>
+      This site is where I write down what I'm thinking about. It's organized
+      into <a href="/essays/">essays</a> (independent thinking),
+      <a href="/podcasts/">podcasts</a> (collaborative thinking),
+      <a href="/projects/">projects</a> (things I've built), and
+      <a href="/quotes/">quotes</a> (lines I keep coming back to).
+    </p>
+
+    <h2>Work</h2>
+    <ul>
+      <li>
+        <strong>Laurence</strong> — Founding engineer · 2025&nbsp;— present
+      </li>
+      <li><strong>BCG</strong> — Consultant</li>
+      <li><strong>Schneider Electric</strong> — Intern</li>
+      <li><strong>L'Oréal</strong> — Intern</li>
+    </ul>
+
+    <h2>Education</h2>
+    <ul>
+      <li>
+        <strong>University of Oxford</strong> — Mathematics &amp; Machine
+        Learning
+      </li>
+      <li><strong>Cornell University</strong> — Computer Science</li>
+    </ul>
+
+    <h2>Elsewhere</h2>
+    <ul>
+      <li>
+        <a href={SOCIALS.linkedin} target="_blank" rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+      </li>
+      <li>
+        <a href={SOCIALS.twitter} target="_blank" rel="noopener noreferrer"
+          >Twitter / X</a
+        >
+      </li>
+      <li>
+        <a href={SOCIALS.github} target="_blank" rel="noopener noreferrer"
+          >GitHub</a
+        >
+      </li>
+    </ul>
+  </div>
+</BaseLayout>

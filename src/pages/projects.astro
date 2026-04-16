@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => {
+  if (a.data.order !== b.data.order) return a.data.order - b.data.order;
+  return a.data.name.localeCompare(b.data.name);
+});
+---
+
+<BaseLayout
+  title="Projects"
+  description="Things Gaspard Loeillot has built or is building."
+>
+  <header class="mb-12">
+    <h1 class="font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
+      Projects
+    </h1>
+    <p class="mt-3 text-[15px] leading-relaxed" style="color: var(--fg-muted);">
+      Things I've built or am building. Starting with Laurence, my current
+      startup.
+    </p>
+  </header>
+
+  <div class="flex flex-col gap-8">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+
+  {
+    projects.length === 0 && (
+      <p class="text-[15px]" style="color: var(--fg-muted);">
+        No projects listed yet.
+      </p>
+    )
+  }
+</BaseLayout>

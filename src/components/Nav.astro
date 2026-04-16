@@ -1,0 +1,107 @@
+---
+import { NAV_ITEMS, SOCIALS } from '../consts.ts';
+import ThemeToggle from './ThemeToggle.astro';
+
+const pathname = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+}
+---
+
+<header
+  class="ui flex items-center justify-between border-b py-5 text-sm"
+  style="border-color: var(--rule);"
+>
+  <a href="/" class="font-medium tracking-tight hover:no-underline">
+    Gaspard Loeillot
+  </a>
+
+  <nav class="flex items-center gap-5 sm:gap-7">
+    <ul class="hidden items-center gap-5 sm:flex sm:gap-6">
+      {
+        NAV_ITEMS.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                'text-[13px] tracking-tight transition-colors',
+                isActive(item.href) ? 'font-medium' : '',
+              ]}
+              style={
+                isActive(item.href)
+                  ? 'color: var(--fg);'
+                  : 'color: var(--fg-muted);'
+              }
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <a
+        href={SOCIALS.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        class="opacity-70 transition-opacity hover:opacity-100"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+          />
+        </svg>
+      </a>
+      <a
+        href={SOCIALS.twitter}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Twitter / X"
+        class="opacity-70 transition-opacity hover:opacity-100"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M18.244 2H21.5l-7.5 8.573L23 22h-6.82l-5.34-6.99L4.74 22H1.48l8.02-9.17L1 2h6.98l4.83 6.39L18.244 2zm-1.2 18h1.87L7.03 4H5.05l12 16z"
+          />
+        </svg>
+      </a>
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>
+
+{/* Mobile nav — simple inline row; no hamburger for now. */}
+<nav
+  class="ui flex justify-start gap-4 overflow-x-auto border-b py-3 text-[13px] sm:hidden"
+  style="border-color: var(--rule);"
+>
+  {
+    NAV_ITEMS.map((item) => (
+      <a
+        href={item.href}
+        class:list={['shrink-0', isActive(item.href) ? 'font-medium' : '']}
+        style={
+          isActive(item.href) ? 'color: var(--fg);' : 'color: var(--fg-muted);'
+        }
+      >
+        {item.label}
+      </a>
+    ))
+  }
+</nav>

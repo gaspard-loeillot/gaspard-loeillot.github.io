@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  essay: CollectionEntry<'essays'>;
+}
+
+const { essay } = Astro.props;
+const { title, date } = essay.data;
+
+const dateLabel = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<li class="flex items-baseline justify-between gap-6 py-2">
+  <a
+    href={`/essays/${essay.id}/`}
+    class="font-serif text-[17px] leading-snug hover:text-[var(--accent)]"
+  >
+    {title}
+  </a>
+  <time
+    datetime={date.toISOString()}
+    class="ui shrink-0 text-[12px] tabular-nums"
+    style="color: var(--fg-faint);"
+  >
+    {dateLabel}
+  </time>
+</li>

@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { name, tagline, role, period, status, url, repoUrl, coverImage } =
+  project.data;
+
+const { Content } = await render(project);
+
+const statusLabel = {
+  active: 'Active',
+  shipped: 'Shipped',
+  archived: 'Archived',
+}[status];
+---
+
+<article
+  class="overflow-hidden rounded-lg border"
+  style="border-color: var(--rule); background: var(--bg-elevated);"
+>
+  {
+    coverImage && (
+      <div
+        class="aspect-[16/9] w-full overflow-hidden"
+        style="background: var(--rule);"
+      >
+        <img
+          src={coverImage}
+          alt={`${name} cover`}
+          loading="lazy"
+          class="h-full w-full object-cover"
+        />
+      </div>
+    )
+  }
+
+  <div class="flex flex-col gap-4 p-6">
+    <div class="flex flex-wrap items-baseline justify-between gap-3">
+      <h2 class="font-serif text-2xl leading-tight tracking-tight">
+        {name}
+      </h2>
+      <span
+        class="ui text-[11px] uppercase tracking-wider"
+        style="color: var(--fg-faint);"
+      >
+        {statusLabel} · {period}
+      </span>
+    </div>
+
+    <p class="text-[15px] leading-relaxed" style="color: var(--fg-muted);">
+      {tagline}
+    </p>
+
+    <p
+      class="ui text-[13px]"
+      style="color: var(--fg-muted);"
+    >
+      <span style="color: var(--fg-faint);">Role —</span> {role}
+    </p>
+
+    <div class="prose prose-sm max-w-none">
+      <Content />
+    </div>
+
+    {
+      (url || repoUrl) && (
+        <div class="ui flex flex-wrap gap-4 text-[13px]">
+          {url && (
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              Visit ↗
+            </a>
+          )}
+          {repoUrl && (
+            <a href={repoUrl} target="_blank" rel="noopener noreferrer">
+              Repo ↗
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+</article>

@@ -1,0 +1,30 @@
+/**
+ * Site-wide constants. Edit these once; they propagate everywhere.
+ */
+
+export const SITE_URL = 'https://gaspardloeillot.github.io';
+
+export const SITE_TITLE = 'Gaspard Loeillot';
+export const SITE_DESCRIPTION =
+  'Essays, podcasts, and projects by Gaspard Loeillot — founding engineer at Laurence (YC W26).';
+
+export const AUTHOR = {
+  name: 'Gaspard Loeillot',
+  role: 'Founding engineer, Laurence (YC W26)',
+  location: 'New York',
+  email: 'hello@example.com', // TODO: replace with real email
+};
+
+export const SOCIALS = {
+  linkedin: 'https://www.linkedin.com/in/gaspardloeillot/', // TODO: verify
+  twitter: 'https://twitter.com/gaspardloeillot', // TODO: verify or remove
+  github: 'https://github.com/gaspardloeillot', // TODO: verify
+};
+
+export const NAV_ITEMS = [
+  { label: 'Projects', href: '/projects/' },
+  { label: 'Podcasts', href: '/podcasts/' },
+  { label: 'Quotes', href: '/quotes/' },
+  { label: 'CV', href: '/cv.pdf' }, // TODO: drop a PDF into /public/cv.pdf
+  { label: 'About', href: '/about/' },
+] as const;

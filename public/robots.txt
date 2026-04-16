@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gaspardloeillot.github.io/sitemap-index.xml

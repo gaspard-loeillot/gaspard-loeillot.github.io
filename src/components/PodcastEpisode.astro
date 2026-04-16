@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+
+interface Props {
+  episode: CollectionEntry<'podcasts'>;
+}
+
+const { episode } = Astro.props;
+const { title, date, guest, description, audioUrl, duration, episodeNumber } =
+  episode.data;
+
+const { Content } = await render(episode);
+
+const dateLabel = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<article
+  class="border-t py-8 first:border-t-0 first:pt-0"
+  style="border-color: var(--rule);"
+  id={episode.id}
+>
+  <div
+    class="ui mb-2 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-wider"
+    style="color: var(--fg-faint);"
+  >
+    {episodeNumber !== undefined && <span>Ep. {episodeNumber}</span>}
+    {episodeNumber !== undefined && <span>·</span>}
+    <time datetime={date.toISOString()}>{dateLabel}</time>
+    {duration && <span>·</span>}
+    {duration && <span>{duration}</span>}
+  </div>
+
+  <h2 class="font-serif text-2xl leading-tight tracking-tight">
+    {title}
+  </h2>
+  <p class="ui mt-1 text-sm" style="color: var(--fg-muted);">
+    with <span style="color: var(--fg);">{guest}</span>
+  </p>
+
+  <p class="mt-3 text-[15px] leading-relaxed">
+    {description}
+  </p>
+
+  {
+    audioUrl && (
+      <audio controls preload="none" class="mt-4 w-full" src={audioUrl}>
+        Your browser does not support the audio element.
+      </audio>
+    )
+  }
+
+  {/* Optional show notes from MDX body */}
+  <div class="prose prose-sm mt-4 max-w-none">
+    <Content />
+  </div>
+</article>
