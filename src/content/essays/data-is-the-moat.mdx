@@ -1,0 +1,59 @@
+---
+title: "Data is the Moat"
+date: 2026-03-27
+description: "In a world where algorithms are commoditized, the only durable moat is proprietary data — and most founders aren't thinking about it early enough."
+tags: ["startups", "data", "moats"]
+coverImage: "/images/data-is-the-moat-cover.png"
+---
+
+> **TL;DR.** Most startups die because they build something replaceable. The ones that will survive in the future will have to build proprietary datasets that competitors can't replicate. Data isn't just an asset, it's the moat. And most founders aren't thinking about it early enough.
+
+I've been spending a lot of time lately thinking about what actually makes a company defensible.
+
+Not in the abstract MBA sense: sustainable competitive advantage, Porter's Five Forces, whatever. I mean practically: why would a customer stay with you when a 17 year old kid can just vibe-code it in a week?
+
+At Laurence, we automate Amazon advertising using hierarchical Bayesian inference and a patent-pending conversion rate estimation model. On the surface, that sounds like the kind of thing that could be replicated. And honestly? Parts of it could be. But the reason it gets harder and harder to replicate over time isn't the algorithm. It's the data. Every bid we place, every keyword that converts or doesn't, every account we run teaches the model something that a competitor starting from scratch simply doesn't have. The data compounds. The model gets better. The moat widens.
+
+That realization changed how I think about building companies entirely.
+
+## The Limiting Factor Problem
+
+Before you can build a moat, you need to understand what's actually holding your product back. I've been interested lately with a framework I first heard from Elon Musk: in any complex system, there is always a limiting factor. The single constraint that, if removed, unlocks the most value. Your job isn't to solve everything. It's to identify the most critical bottleneck and remove it. Then the next one becomes the most critical. Then you remove that.
+
+This is how good Bayesian models break down in practice too. At Laurence, we discovered that the limiting factor for larger accounts wasn't our bidding logic. It was the assumptions we were making about how Amazon's ad ecosystem actually works at scale. Fix the wrong thing, and you're just making the second most important problem slightly less painful while the real bottleneck quietly bleeds you out.
+
+The same framework applies to building a data moat. There's always a limiting factor in your data collection: the wrong signal, the wrong feedback loop, the wrong incentive for users to contribute. Find that, fix it, and suddenly your dataset compounds faster than anyone else's.
+
+## Why Most Companies Have Terrible Data
+
+Most companies collect data the wrong way. They send surveys nobody wants to fill out. They read reviews written by a handful of people who were either ecstatic or furious, which is a systematically biased sample of reality. They track vanity metrics that feel good in dashboards but don't predict outcomes.
+
+The result is that their models, whether that's a literal ML model or just the intuitions of their product team, are built on noisy, unrepresentative signals. They're making decisions with fifty percent quality data, which means their solutions are fifty percent solutions.
+
+This is actually a massive opportunity. If you can find a domain where the incumbent solutions are built on bad data, and you can figure out how to collect better data, you can leapfrog them not by working harder but by seeing more clearly.
+
+## What a Real Data Moat Looks Like
+
+A genuine data moat has three properties.
+
+**First, it's proprietary.** The data exists because you built a system that generates it, not because you scraped it from somewhere anyone else could also scrape. At Laurence, our bidding decisions generate outcome data that lives in our system. A competitor can copy the algorithm, but they can't copy the history.
+
+**Second, it captures dimensions nobody else is measuring.** This is the hardest part. It's not enough to collect more of the same data everyone else has. You need to identify the variables that actually predict outcomes but that incumbents are ignoring. Think of it like principal component analysis: among the high dimensional space of possible signals, there are a few components that explain the most variance. Most companies are optimizing on the wrong components because they never looked.
+
+**Third, it creates a feedback loop that compounds.** The more customers use your product, the more data you get, the better your product gets, the more customers you attract. This is why Spotify's recommendations improve the more you use it, or why Google's search got better for years as more people used it. The data flywheel is the moat.
+
+## Finding the Right Domain
+
+Not every industry is equally amenable to this. The best domains for building a data moat share a few properties: high financial stakes so people are desperate for better solutions, fast feedback loops so you can actually measure whether your model is working, and underexploited data dimensions so there's still a gap to fill.
+
+I've been pressure testing different industries against this framework. Sports analytics is interesting but the feedback loops are slow and clubs hoard data. Real estate has high stakes but incumbents already collect a lot. E-commerce advertising, where Laurence operates, checks all three boxes, which is part of why it's working.
+
+The domains that fail the test are usually ones where the incentives for data sharing are misaligned or where the feedback signal is too noisy or delayed to actually improve your model.
+
+## The Takeaway
+
+If I were starting a company today, the first question I'd ask isn't "what problem am I solving?" It's "what data could I generate that nobody else has, and does solving this problem create a natural mechanism for collecting it?"
+
+Because in a world where algorithms are increasingly commoditized, where anyone with enough compute can train a decent model, the differentiator isn't the model. It's what you feed it. The companies that win in the next decade won't be the ones with the cleverest engineers. They'll be the ones that figured out, early, what dimensions actually mattered and built systems to measure them before anyone else thought to look.
+
+Data is the moat. Everything else is just the castle.
