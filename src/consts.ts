@@ -2,7 +2,7 @@
  * Site-wide constants. Edit these once; they propagate everywhere.
  */
 
-export const SITE_URL = 'https://gaspardloeillot.github.io';
+export const SITE_URL = 'https://gaspard-loeillot.github.io';
 
 export const SITE_TITLE = 'Gaspard Loeillot';
 export const SITE_DESCRIPTION =
@@ -16,9 +16,9 @@ export const AUTHOR = {
 };
 
 export const SOCIALS = {
-  linkedin: 'https://www.linkedin.com/in/gaspardloeillot/', // TODO: verify
+  linkedin: 'https://www.linkedin.com/in/gaspard-loeillot/', // TODO: verify
   twitter: 'https://twitter.com/gaspardloeillot', // TODO: verify or remove
-  github: 'https://github.com/gaspardloeillot', // TODO: verify
+  github: 'https://github.com/gaspard-loeillot', // TODO: verify
 };
 
 export const NAV_ITEMS = [

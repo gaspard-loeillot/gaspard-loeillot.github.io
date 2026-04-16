@@ -1,10 +1,10 @@
-# gaspardloeillot.github.io
+# gaspard-loeillot.github.io
 
 Personal website of Gaspard Loeillot. Blog-first site with essays, podcasts,
 projects, and quotes. Built with [Astro](https://astro.build) +
 [Tailwind CSS v4](https://tailwindcss.com) + MDX.
 
-Deployed to [GitHub Pages](https://gaspardloeillot.github.io) on every push to
+Deployed to [GitHub Pages](https://gaspard-loeillot.github.io) on every push to
 `main` via GitHub Actions.
 
 ## Local development
@@ -125,12 +125,12 @@ site with Astro and deploys the static output to GitHub Pages.
 
 **First-time setup on GitHub:**
 
-1. Create a new GitHub repo named `gaspardloeillot.github.io` (the user-site
-   naming convention).
+1. Create a new GitHub repo named `gaspard-loeillot.github.io` (the user-site
+   naming convention — it must exactly equal `<username>.github.io`).
 2. Set the repo's Pages source to **GitHub Actions**: Settings → Pages →
    Source → "GitHub Actions".
 3. Push `main`. The action runs and your site goes live at
-   <https://gaspardloeillot.github.io>.
+   <https://gaspard-loeillot.github.io>.
 
 ### Custom domain (optional, later)
 
