@@ -12,7 +12,7 @@ export const AUTHOR = {
   name: 'Gaspard Loeillot',
   role: 'Founding engineer, Laurence (YC W26)',
   location: 'New York',
-  email: 'hello@example.com', // TODO: replace with real email
+  email: 'gaspard.loeillot@example.com',
 };
 
 export const SOCIALS = {
